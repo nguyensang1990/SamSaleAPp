@@ -1,0 +1,92 @@
+[
+  {
+    "ProductId": 1,
+    "ProductName": "Vịt Quay Sốt Tiêu Đen",
+    "Price": 350000,
+    "Unit": "Con"
+  },
+  {
+    "ProductId": 2,
+    "ProductName": "Vịt Quay Sốt Tiêu Đen - 1/2 con",
+    "Price": 175000,
+    "Unit": "Nửa con"
+  },
+  {
+    "ProductId": 3,
+    "ProductName": "Vịt Quay Sốt Tiêu Đen (Da Giòn)",
+    "Price": 400000,
+    "Unit": "Con"
+  },
+  {
+    "ProductId": 4,
+    "ProductName": "Vịt Quay Sốt Tiêu Đen (Da Giòn) 1/2 con",
+    "Price": 200000,
+    "Unit": "Nửa con"
+  },
+  {
+    "ProductId": 5,
+    "ProductName": "Bánh Bao",
+    "Price": 10000,
+    "Unit": "Bịch (10 cái)"
+  },
+  {
+    "ProductId": 6,
+    "ProductName": "Ngỗn Quay Tiêu Đen",
+    "Price": 900000,
+    "Unit": "Con"
+  },
+  {
+    "ProductId": 7,
+    "ProductName": "Ngỗng Quay Hồng Kông",
+    "Price": 900000,
+    "Unit": "Con"
+  },
+  {
+    "ProductId": 8,
+    "ProductName": "Gà Ta Hấp",
+    "Price": 320000,
+    "Unit": "Con"
+  },
+  {
+    "ProductId": 9,
+    "ProductName": "Gà Hấp Xì Dầu",
+    "Price": 340000,
+    "Unit": "Con"
+  },
+  {
+    "ProductId": 10,
+    "ProductName": "Heo Nhỏ",
+    "Price": 900000,
+    "Unit": "Con"
+  },
+  {
+    "ProductId": 11,
+    "ProductName": "Heo Trung",
+    "Price": 1200000,
+    "Unit": "Con"
+  },
+  {
+    "ProductId": 12,
+    "ProductName": "Heo Lớn",
+    "Price": 1500000,
+    "Unit": "Con"
+  },
+  {
+    "ProductId": 13,
+    "ProductName": "Sườn Non Nướng Mật Ong",
+    "Price": 26000,
+    "Unit": "100g"
+  },
+  {
+    "ProductId": 14,
+    "ProductName": "Xá Xíu Nướng Mật Ong",
+    "Price": 25000,
+    "Unit": "100g"
+  },
+  {
+    "ProductId": 15,
+    "ProductName": "Thịt Quay Ma Cao",
+    "Price": 25000,
+    "Unit": "100g"
+  }
+]
