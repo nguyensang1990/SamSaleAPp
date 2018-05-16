@@ -37,12 +37,12 @@ const  ConfirmFood = ({
               <Avatar
                 large
                 containerStyle={{ marginRight: 10 }}
-                source={require('../../data/duck.jpg')}s
+                source={require('../../data/cup.jpg')}s
               />
             </View>
             <View>
               <Text style={{ fontWeight: 'bold', fontSize: 17 }}>{item.ProductName}</Text>
-              <Text>{`${(item.Price|| 0).toLocaleString('en')} VNĐ`}</Text>
+              <Text>{`${(item.Price|| 0).toLocaleString('en')} CAD`}</Text>
               <View style={{flexDirection:'row'}}>
                 <Icon
                 name='indeterminate-check-box'
@@ -62,11 +62,11 @@ const  ConfirmFood = ({
 
           </View>
           <Divider style={{ backgroundColor: '#84741b', marginTop: 20, marginBottom: 10 }} />
-          <Text style={{color:'white', alignSelf:'center', fontWeight:'bold'}} h4>Lựa chọn</Text>
+          <Text style={{color:'white', alignSelf:'center', fontWeight:'bold'}} h4>Choose Hot Or Ice</Text>
           <View style={{ flexDirection: 'row', width:'100%' }}>
             <CheckBox
               center
-              title='Chặt'
+              title='Ice'
               uncheckedIcon='circle-o'
               checkedIcon='dot-circle-o'
               checked={(check==='chat')}
@@ -76,7 +76,7 @@ const  ConfirmFood = ({
 
             <CheckBox
               center
-              title='Để Nguyên'
+              title='Hot'
               uncheckedIcon='circle-o'
               checkedIcon='dot-circle-o'
               checked={(check==='denguyen')}
@@ -89,7 +89,7 @@ const  ConfirmFood = ({
               color= 'black'
               containerViewStyle={{ padding: 0, marginLeft: 10, marginRight: 10 }}
               buttonStyle={{ alignSelf: 'stretch', margin: 0, marginTop: 10, backgroundColor: 'white' }}
-              title='Thêm vào giỏ hàng'
+              title='Add To Cart'
               onPress={addPress}
             />
           </View>

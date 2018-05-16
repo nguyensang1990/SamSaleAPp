@@ -44,7 +44,7 @@ class Cart extends Component {
               <Avatar
                 large
                 rounded
-                source={require('../data/duck.jpg')}
+                source={require('../data/cup.jpg')}
                 activeOpacity={0.7}
               />
             }
@@ -61,13 +61,13 @@ class Cart extends Component {
             }
             subtitle={
               <View style={{ paddingLeft: 10 }}>
-                <Text>Đơn Giá: {l.Price.toLocaleString('en')}</Text>
-                <Text>Số Lượng: {l.num}</Text>
+                <Text>Unit Price: {l.Price.toLocaleString('en')}</Text>
+                <Text>Quantity: {l.num}</Text>
                 <Text>
-                  Thành Tiền: {(l.Price * l.num).toLocaleString('en')}
+                  Total: {(l.Price * l.num).toLocaleString('en')}
                 </Text>
                 <Text>
-                  Hình Thức: {l.check === 'chat' ? 'Chặt' : 'Để Nguyên'}
+                  Type: {l.check === 'chat' ? 'Ice' : 'Hot'}
                 </Text>
               </View>
             }
@@ -75,7 +75,7 @@ class Cart extends Component {
               <Icon
                 name="remove-shopping-cart"
                 size={30}
-                color="#e8c502"
+                color= {mainColor}
                 onPress={() => {
                   this.removeFoodfromCart(i);
                 }}

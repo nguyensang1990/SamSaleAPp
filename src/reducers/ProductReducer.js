@@ -1,5 +1,5 @@
-import Duck from '../data/Duck.json';
-export default () => Duck;
+import products from '../data/products.json';
+export default () => products;
 
 // import { DuckData } from '../data/Duck'
 

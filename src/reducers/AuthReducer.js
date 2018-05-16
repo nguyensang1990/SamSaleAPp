@@ -22,7 +22,7 @@ const INITIAL_STATE = {
     Password: '',
   },
   currentUser: {},
-  currentLogin: true,
+  currentLogin: false,
   loading: false,
   error: '',
   signUpStatus: '',

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import DuckReducer from './DuckReducer';
+import products from './ProductReducer';
 import AddToCartReducer from './AddToCartReducer';
 import AuthReducer from './AuthReducer';
 
 export default combineReducers({
-  duckData: DuckReducer,
+  products: products,
   addToCart: AddToCartReducer,
   authData: AuthReducer
 });

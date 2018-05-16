@@ -140,7 +140,7 @@ class Menu extends Component {
         <Avatar
           large
           containerStyle={{ marginRight: 10 }}
-          source={require('../data/duck.jpg')}
+          source={require('../data/cup.jpg')}
         />
       }
       title={
@@ -148,7 +148,7 @@ class Menu extends Component {
           <Text style={{ fontWeight: 'bold', fontSize: 17 }}>
             {item.ProductName}
           </Text>
-          <Text>{`${item.Price.toLocaleString('en')} VNĐ/${item.Unit}`}</Text>
+          <Text>{`${item.Price.toLocaleString('en')} CAD/${item.Unit}`}</Text>
         </View>
       }
       rightIcon={
@@ -179,7 +179,7 @@ class Menu extends Component {
       <View style={containerStyle}>
         <FlatList
           keyExtractor={this.keyExtractor}
-          data={this.props.duckData}
+          data={this.props.products}
           renderItem={this.renderItem}
           extraData={this.props.addToCart.cartCounter}
         />
@@ -255,8 +255,8 @@ const styles = {
 const mapStateToProps = state => {
   return {
     authData: state.authData,
-    duckData: state.duckData,
-    loadingData: state.duckData.loadingData,
+    products: state.products,
+    loadingData: state.products.loadingData,
     addToCart: state.addToCart
   };
 };
