@@ -1,5 +1,8 @@
 {
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 6494,
+  "expoServerNgrokUrl": "https://m9-psz.samderlust.samsaleapp.exp.direct",
+  "packagerNgrokUrl": "https://packager.m9-psz.samderlust.samsaleapp.exp.direct",
+  "ngrokPid": 6511
 }

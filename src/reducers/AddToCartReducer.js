@@ -7,11 +7,11 @@ import {
   REMOVE_FROM_CART,
   REMOVE_ALL_FROM_CART,
   LOG_OUT
- } from '../actions/types';
+} from '../actions/types';
 
 const INITIAL_STATE = {
   cartCounter: 0,
-  cart: [],
+  cart: []
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -35,7 +35,7 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, cart: [], cartCounter: 0 };
     case LOG_OUT:
       return INITIAL_STATE;
-      
+
     default: return state;
   }
 };

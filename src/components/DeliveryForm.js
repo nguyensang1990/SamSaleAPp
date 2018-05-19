@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { ScrollView, View, TextInput } from 'react-native';
 import {
   Card,
@@ -13,8 +13,7 @@ import {
 import { mainColor } from './common/Color';
 
 class DeliveryForm extends Component {
-
-  getTotal() {
+  getTotal () {
     const { cart } = this.props.addToCart;
     const sumArr = cart.map(a => a.Price * a.num);
     let total = 0;
@@ -24,7 +23,7 @@ class DeliveryForm extends Component {
     return total.toLocaleString('en');
   }
 
-  render() {
+  render () {
     const { inputFieldStyle, infoStyle } = styles;
     const { cart } = this.props.addToCart;
     const { currentUser } = this.props.authData;
@@ -34,7 +33,7 @@ class DeliveryForm extends Component {
           containerStyle={{ padding: 0, margin: 0 }}
           imageProps={{ resizeMode: 'cover', backgroundColor: 'black' }}
           imageWrapperStyle={{ backgroundColor: mainColor }}
-          image={require('../data/banner.jpg')}
+          image={require('../data/banner1.jpg')}
         >
           <Text style={{ alignSelf: 'center', color: 'white', fontWeight: 'bold' }} h3>{currentUser.FullName}</Text>
         </Card>
@@ -47,7 +46,7 @@ class DeliveryForm extends Component {
                   key={i}
                   title={item.ProductName}
                   rightIcon={
-                    <Text>{(item.Price*item.num).toLocaleString('en')}</Text>
+                    <Text>{(item.Price * item.num).toLocaleString('en')}</Text>
                   }
                   leftIcon={
                     <Badge
@@ -68,17 +67,17 @@ class DeliveryForm extends Component {
         <Card containerStyle={{ padding: 0, margin: 0 }} >
           <View style={infoStyle}>
             <Text h4>{currentUser.PhoneNumber}</Text>
-          <FormLabel>Adress</FormLabel>
-          <TextInput
-            style={inputFieldStyle}
-            multiline
-            numberOfLines={4}
-            placeholder="Your address"
-            autoCorrect={false}
-          />
+            <FormLabel>Adress</FormLabel>
+            <TextInput
+              style={inputFieldStyle}
+              multiline
+              numberOfLines={4}
+              placeholder='Your address'
+              autoCorrect={false}
+            />
           </View>
           <Button
-            title="Confirm to Diliver"
+            title='Confirm to Diliver'
             backgroundColor={mainColor}
             textStyle={{
               fontWeight: 'bold',
@@ -86,7 +85,7 @@ class DeliveryForm extends Component {
               padding: 0,
               margin: 0
             }}
-            onPress={() => {console.log(currentUser)}}
+            onPress={() => { console.log(currentUser); }}
           />
         </Card>
       </ScrollView>
@@ -101,12 +100,12 @@ const styles = {
     paddingRight: 15,
     paddingLeft: 15,
     marginBottom: 10,
-    marginTop: 10,
+    marginTop: 10
 
   },
   infoStyle: {
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'center'
   }
 };
 
@@ -114,7 +113,7 @@ const mapStateToProps = state => {
   return {
     addToCart: state.addToCart,
     authData: state.authData
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps)(DeliveryForm)
+export default connect(mapStateToProps)(DeliveryForm);

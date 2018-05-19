@@ -18,15 +18,9 @@
     "Unit": "Cup"
   },
   {
-    "ProductId": 1,
+    "ProductId": 4,
     "ProductName": "Prduct 4",
     "Price": 14,
-    "Unit": "Cup"
-  },
-  {
-    "ProductId": 1,
-    "ProductName": "Prduct 4",
-    "Price": 12,
     "Unit": "Cup"
   },
   {

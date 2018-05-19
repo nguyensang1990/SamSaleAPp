@@ -1,25 +1,23 @@
-import update from 'immutability-helper';
-
-import { 
-SIGN_UP_SUCCESS,
-SIGN_UP_FAIL,
-PHONE_CHANGE,
-PASS_CHANGE,
-LOGIN_USER,
-LOGIN_SUCCESS,
-LOGIN_FAIL,
-INFO_FAIL,
-LOG_OUT,
-FILL_SIGNUP_INFO,
-LOGIN_OR_SIGN_UP
- } from '../actions/types';
+import {
+  SIGN_UP_SUCCESS,
+  SIGN_UP_FAIL,
+  EMAIL_CHANGE,
+  PASS_CHANGE,
+  LOGIN_USER,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  INFO_FAIL,
+  LOG_OUT,
+  FILL_SIGNUP_INFO,
+  LOGIN_OR_SIGN_UP
+} from '../actions/types';
 
 const INITIAL_STATE = {
   account: {
-    FullName: '',
-    Gender: true,
-    PhoneNumber: '',
-    Password: '',
+    name: '',
+    gender: true,
+    email: '',
+    password: ''
   },
   currentUser: {},
   currentLogin: false,
@@ -33,15 +31,16 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FILL_SIGNUP_INFO:
       return { ...state,
-          account: { ...state.account,
-            [action.payload.prop]: action.payload.value } };
-    case PHONE_CHANGE:
-      return update(state,
-        { account: { PhoneNumber: { $set: action.payload } }
-      });
+        account: { ...state.account,
+          [action.payload.prop]: action.payload.value } };
+    case EMAIL_CHANGE:
+      return {
+        ...state,
+        account: {...state.account, email: action.payload}
+      };
     case PASS_CHANGE:
       return { ...state,
-        account: { ...state.account, Password: action.payload },
+        account: { ...state.account, password: action.payload },
         error: ''
       };
     case SIGN_UP_SUCCESS:
@@ -55,11 +54,11 @@ export default (state = INITIAL_STATE, action) => {
     case INFO_FAIL:
       return { ...state, loading: false, error: 'Thông tin đăng nhập không đúng' };
     case LOGIN_FAIL:
-      return { ...state, 
-        loading: false, 
+      return { ...state,
+        loading: false,
         error: action.payload,
-      account: { ...state.account, name: '', pass: '' }
-    };
+        account: { ...state.account, name: '', pass: '' }
+      };
     case LOG_OUT:
       return INITIAL_STATE;
     case LOGIN_OR_SIGN_UP:

@@ -194,7 +194,7 @@ class Menu extends Component {
           <Button
             backgroundColor="#1d3359"
             containerViewStyle={button2}
-            title="Go to Cart"
+            title="Deliver"
             buttonStyle={{ paddingLeft: 0, paddingRight: 0 }}
             onPress={() => this.props.navigation.navigate('DeliveryForm')}
           />

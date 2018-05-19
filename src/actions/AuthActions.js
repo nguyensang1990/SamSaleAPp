@@ -1,8 +1,10 @@
-import { 
+import firebase from 'firebase';
+
+import {
   SIGN_UP_SUCCESS,
   SIGN_UP_FAIL,
   PASS_CHANGE,
-  PHONE_CHANGE,
+  EMAIL_CHANGE,
   LOGIN_USER,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
@@ -10,52 +12,49 @@ import {
   INFO_FAIL,
   FILL_SIGNUP_INFO,
   LOGIN_OR_SIGN_UP
- } from './types';
- 
-import { LoginAPI, SignUpAPI } from '../config/Api';
+} from './types';
 
-export const signUpUser = ({ FullName, PhoneNumber, Password, Gender }) => {
-  return (dispatch) => {
-    spinnerRun(dispatch);
-    fetch(SignUpAPI, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        PhoneNumber,
-        FullName,
-        Gender,
-        Password
-      }),
-    })
-    .then(data => data.json())
-    .then(data => signUpStatusCheck(dispatch, data))
+export const signUpUser = ({ email, password }) => dispatch => {
+  spinnerRun(dispatch);
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(data => console.log(data))
+    .catch(e => signUpFail(dispatch, e));
+};
+
+export const loginUser = ({ email, pass }, { nav }) => dispatch => {
+  spinnerRun(dispatch);
+  firebase.auth().signInWithEmailAndPassword(email, pass)
+    .then(user => loginSuccess(dispatch, user, nav))
     .catch(e => loginFail(dispatch, e));
-  };
 };
 
 export const signUpStatusCheck = (dispatch, data) => {
-  if(!data.Status) {
+  if (!data.Status) {
     dispatch({
       type: SIGN_UP_FAIL,
-      payload: "Sign Up failed, please try again"
-    })
-  }else if (data.Status) {
+      payload: 'Sign Up failed, please try again'
+    });
+  } else if (data.Status) {
     dispatch({
       type: SIGN_UP_SUCCESS,
       payload: 'Sign Up sucessful'
     });
   }
-}
+};
+
+const signUpFail = (dispatch, e) => {
+  dispatch({
+    type: SIGN_UP_FAIL,
+    payload: e.message
+  });
+};
 
 export const changeLogInOrSignUp = (status) => {
   return {
     type: LOGIN_OR_SIGN_UP,
     payload: status
-  }
-}
+  };
+};
 
 export const fillSignupInfo = ({ prop, value }) => {
   return {
@@ -64,41 +63,23 @@ export const fillSignupInfo = ({ prop, value }) => {
   };
 };
 
-export const loginUser = ({ phone, pass }, { nav }) => dispatch => {
-  spinnerRun(dispatch);
-  fetch(LoginAPI, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      phoneNumber: phone,
-      password: pass
-    })
-  })
-    .then(response => response.json())
-    .then(data => loginSuccess(dispatch, data, nav))
-    .catch(e => loginFail(dispatch, e));
-};
-
 export const spinnerRun = (dispatch) => {
   dispatch({
-    type: LOGIN_USER,
+    type: LOGIN_USER
   });
 };
 
 export const loginSuccess = (dispatch, data, nav) => {
   if (data.Status === false) {
     dispatch({
-      type: INFO_FAIL,
+      type: INFO_FAIL
     });
-  }  else {
+  } else {
     dispatch({
       type: LOGIN_SUCCESS,
       payload: data.User
     });
-    console.log(data)
+    console.log(data);
     nav.navigate('Menu');
   }
 };
@@ -106,21 +87,21 @@ export const loginSuccess = (dispatch, data, nav) => {
 export const loginFail = (dispatch, e) => {
   dispatch({
     type: LOGIN_FAIL,
-    payload: 'Internet is not stable'
+    payload: e.message
   });
   console.log(e);
 };
 
 export const logOutUser = () => ({
-    type: LOG_OUT
-  });
+  type: LOG_OUT
+});
 
 export const passChange = (text) => ({
-    type: PASS_CHANGE,
-    payload: text
-  });
+  type: PASS_CHANGE,
+  payload: text
+});
 
-export const userphoneChange = (text) => ({
-    type: PHONE_CHANGE,
-    payload: text
-  });
+export const userEmailChange = (text) => ({
+  type: EMAIL_CHANGE,
+  payload: text
+});

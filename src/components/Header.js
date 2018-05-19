@@ -9,16 +9,16 @@ import { mainColor } from './common/Color';
 import Cart from './Cart';
 
 class AppHeader extends Component {
-  render() {
+  render () {
     return (
       <Header
-        placement="left"
+        placement='left'
         backgroundColor={mainColor}
         centerComponent={{ text: this.props.state2.title, style: { color: '#fff', fontSize: 18, fontWeith: 'bold' } }}
         rightComponent={<View style={{ display: 'flex', flexDirection: 'row' }}>
           <Icon
             name='shopping-cart'
-            iconStyle={{ paddingRight: 10, color: "white" }}
+            iconStyle={{ paddingRight: 10, color: 'white' }}
             onPress={() => this.props.state.navigate('Cart')}
           />
           <Badge
@@ -27,15 +27,14 @@ class AppHeader extends Component {
           />
         </View>}
       />
-    )
+    );
   }
 }
-
 
 const mapStateToProps = state => {
   return {
     cartCounter: state.addToCart.cartCounter
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps)(AppHeader)
+export default connect(mapStateToProps)(AppHeader);

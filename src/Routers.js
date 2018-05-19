@@ -18,7 +18,7 @@ const Tabs = TabNavigator({
     navigationOptions: {
       title: 'YOUR SHOP NAME',
       tabBarLabel: 'Home',
-      tabBarIcon: ({ tintColor }) => <Icon name="home" size={20} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Icon name='home' size={20} color={tintColor} />
     }
   },
   Menu: {
@@ -26,7 +26,7 @@ const Tabs = TabNavigator({
     navigationOptions: {
       title: 'PICK YOUR ITEMS',
       tabBarLabel: 'Menu',
-      tabBarIcon: ({ tintColor }) => <Icon name="list" size={20} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Icon name='list' size={20} color={tintColor} />
     }
   },
   Info: {
@@ -34,7 +34,7 @@ const Tabs = TabNavigator({
     navigationOptions: {
       title: 'CONTACT INFORMATION',
       tabBarLabel: 'Contact',
-      tabBarIcon: ({ tintColor }) => <Icon name="contacts" size={20} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Icon name='contacts' size={20} color={tintColor} />
     }
   },
   Cart: {
@@ -42,7 +42,7 @@ const Tabs = TabNavigator({
     navigationOptions: {
       title: 'CHECK OUT',
       tabBarLabel: 'Your Cart',
-      tabBarIcon: ({ tintColor }) => <Icon name="shopping-cart" size={20} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Icon name='shopping-cart' size={20} color={tintColor} />
     }
   },
   Account: {
@@ -50,22 +50,21 @@ const Tabs = TabNavigator({
     navigationOptions: {
       title: 'ACCOUNT INFO',
       tabBarLabel: 'Account',
-      tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={20} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Icon name='account-circle' size={20} color={tintColor} />
     }
   }
 },
-  {
-    tabBarPosition: 'bottom',
-    tabBarOptions: {
-      upperCaseLabel: false,
-      showIcon: true,
-      style: { height: 50 },
-      showLabel: false,
-    },
-    animationEnabled: false
-  }
+{
+  tabBarPosition: 'bottom',
+  tabBarOptions: {
+    upperCaseLabel: false,
+    showIcon: true,
+    style: { height: 50 },
+    showLabel: false
+  },
+  animationEnabled: false
+}
 );
-
 
 const Stack = StackNavigator(
   {
@@ -80,7 +79,7 @@ const Stack = StackNavigator(
       mode: 'modal',
       headerMode: 'none',
       navigationOptions: {
-        title: 'Log in',
+        title: 'Log in'
       }
     },
     DeliveryForm: {
@@ -95,8 +94,7 @@ const Stack = StackNavigator(
 );
 
 const mapStateToProps = state => ({
-    cartCounter: state.addToCart.cartCounter
-  });
-
+  cartCounter: state.addToCart.cartCounter
+});
 
 export default connect(mapStateToProps)(Stack);

@@ -6,25 +6,25 @@ import Communications from 'react-native-communications';
 import { mainColor } from './common/Color';
 
 class Info extends Component {
-  render() {
-    const { textStyle, iconStyle, buttonStyle, buttonTitleStyle, cardTitle } = styles
+  render () {
+    const { textStyle, iconStyle, buttonStyle, buttonTitleStyle, cardTitle } = styles;
 
-    return(
+    return (
       <ScrollView>
         <Card
           titleStyle={cardTitle}
-          title="Ottawa Shop">
+          title='Ottawa Shop'>
           <View style={textStyle}>
-            <Icon containerStyle={iconStyle} name="location-on" size={20}/>
-             <Text>1234 Bank St Ottawa</Text>
-          </View>
-         <View style={textStyle}>
-            <Icon containerStyle={iconStyle} name="phone" size={20}/>
-             <Text>00000000000</Text>
+            <Icon containerStyle={iconStyle} name='location-on' size={20} />
+            <Text>1234 Bank St Ottawa</Text>
           </View>
           <View style={textStyle}>
-            <Icon containerStyle={iconStyle} name="access-time" size={20}/>
-             <Text>06h00 - 22h00</Text>
+            <Icon containerStyle={iconStyle} name='phone' size={20} />
+            <Text>00000000000</Text>
+          </View>
+          <View style={textStyle}>
+            <Icon containerStyle={iconStyle} name='access-time' size={20} />
+            <Text>06h00 - 22h00</Text>
           </View>
 
           <Button
@@ -35,7 +35,7 @@ class Info extends Component {
           />
         </Card>
       </ScrollView>
-    )
+    );
   }
 }
 
@@ -45,11 +45,11 @@ const styles = {
     flexDirection: 'row',
     alignSelf: 'flex-start',
     textAlign: 'center',
-    padding:0,
+    padding: 0,
     alignItems: 'center'
   },
-  iconStyle:{
-    paddingRight: 10,
+  iconStyle: {
+    paddingRight: 10
   },
   cardTitle: {
     fontWeight: 'bold',
@@ -60,17 +60,17 @@ const styles = {
     backgroundColor: mainColor,
     width: 200,
     height: 45,
-    borderColor: "transparent",
+    borderColor: 'transparent',
     borderWidth: 0,
     borderRadius: 5,
     alignSelf: 'center',
     marginTop: 10,
-    padding:0
+    padding: 0
   },
   buttonTitleStyle: {
     fontWeight: 'bold',
-    fontSize: 25,
+    fontSize: 25
   }
-}
+};
 
 export default Info;
