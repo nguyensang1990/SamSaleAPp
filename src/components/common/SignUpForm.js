@@ -93,7 +93,7 @@ const SignUpForm = ({
           }
           if (name !== '' && email !== '' &&
                 password !== '' && match) {
-            signUpUser({ email, password, gender, name });
+            signUpUser({ email, password, gender, name }, {nav: navigation});
           }
         }}
       />

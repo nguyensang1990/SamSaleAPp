@@ -9,6 +9,7 @@ import {
   INFO_FAIL,
   LOG_OUT,
   FILL_SIGNUP_INFO,
+  FETCH_ACCOUNT_INFO,
   LOGIN_OR_SIGN_UP
 } from '../actions/types';
 
@@ -63,6 +64,8 @@ export default (state = INITIAL_STATE, action) => {
       return INITIAL_STATE;
     case LOGIN_OR_SIGN_UP:
       return { ...state, logInOrSignUp: action.payload };
+    case FETCH_ACCOUNT_INFO:
+      return { ...state, currentUser: action.payload };
 
     default: return state;
   }

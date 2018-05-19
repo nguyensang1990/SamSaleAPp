@@ -16,5 +16,7 @@ export const LOG_OUT = 'log_out';
 export const INFO_FAIL = 'info_fail';
 export const LOGIN_OR_SIGN_UP = 'log_in_or_sign_up';
 
+export const FETCH_ACCOUNT_INFO = 'FETCH_ACCOUNT_INFO';
+
 export const GET_DATA = 'get_data';
 export const GET_CATEGORIES = 'get_categories';

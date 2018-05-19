@@ -11,6 +11,7 @@ import Account from './components/Account';
 import AppHeader from './components/Header';
 import LogIn from './components/LogIn';
 import DeliveryForm from './components/DeliveryForm';
+import AccountInformation from './components/Acount/AccountInformation';
 
 const Tabs = TabNavigator({
   Home: {
@@ -88,6 +89,14 @@ const Stack = StackNavigator(
       headerMode: 'none',
       navigationOptions: {
         title: 'Order information'
+      }
+    },
+    AccountInformation: {
+      screen: AccountInformation,
+      mode: 'modal',
+      headerMode: 'none',
+      navigationOptions: {
+        title: 'Acoount Information'
       }
     }
   }

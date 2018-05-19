@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { Card, ListItem, Button, Text } from 'react-native-elements';
+import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 
 import { logOutUser } from '../actions';
 import { mainColor } from './common/Color';
 
 class Account extends Component {
-
-  renderButton() {
+  renderButton () {
     const { currentLogin } = this.props.authData;
     if (currentLogin) {
       return (
@@ -19,7 +18,7 @@ class Account extends Component {
           textStyle={{fontWeight: 'bold', fontSize: 25, padding: 0, margin: 0}}
           buttonStyle={{ marginTop: 10 }}
         />
-      )
+      );
     } else {
       return (
         <Button
@@ -29,46 +28,33 @@ class Account extends Component {
           textStyle={{fontWeight: 'bold', fontSize: 25, padding: 0, margin: 0}}
           buttonStyle={{ marginTop: 10 }}
         />
-      )
+      );
     }
-
   }
 
-  render() {
+  render () {
     return (
       <View>
-        {
-          list.map((l, i) => (
-            <ListItem
-              key={i}
-              avatar={{ source: { uri: l.avatar_url } }}
-              title={l.name}
-              subtitle={l.subtitle}
-            />
-          ))
-        }
-          {this.renderButton()}
+        <Button
+          leftIcon={{name: 'account-box', size: 34, padding: 0, margin: 0}}
+          buttonStyle={{padding: 5}}
+          title='Account Information'
+          backgroundColor='#91b0e2'
+          textStyle={{fontSize: 22, padding: 0, margin: 0}}
+          buttonStyle={{marginTop: 10}}
+          onPress={() => this.props.navigation.navigate('AccountInformation')}
+        />
+        {this.renderButton()}
       </View>
-    )
+    );
   }
 }
 
-const list = [
-  {
-    name: 'Account Information',
-    subtitle: ''
-  },
-  {
-    name: 'Purchase history',
-
-  },
-];
-
-  const mapStateToProps = state => {
-    return {
-      authData: state.authData
-    }
-  }
+const mapStateToProps = state => {
+  return {
+    authData: state.authData
+  };
+};
 
 export default connect(mapStateToProps, {
   logOutUser

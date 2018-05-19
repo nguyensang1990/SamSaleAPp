@@ -11,13 +11,37 @@ import {
   LOG_OUT,
   INFO_FAIL,
   FILL_SIGNUP_INFO,
-  LOGIN_OR_SIGN_UP
+  LOGIN_OR_SIGN_UP,
+  FETCH_ACCOUNT_INFO
 } from './types';
 
-export const signUpUser = ({ email, password }) => dispatch => {
+import {fetchAccountInfo} from './AccountFetchActoins';
+
+export const signUpUser = ({ email, password, gender, name }, { nav }) => dispatch => {
   spinnerRun(dispatch);
+
   firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then(data => console.log(data))
+    .then(data => firebase.auth().signInWithEmailAndPassword(email, password))
+    .then(user => loginSuccess(dispatch, user, nav))
+    .then(() => {
+      const { currentUser } = firebase.auth();
+      firebase.database().ref(`/userInfo/${currentUser.uid}/`)
+        .set({ name, email, gender })
+        .then(() => currentUser.updateProfile({
+          displayName: name
+        }));
+    })
+    .then(() => {
+      const { currentUser } = firebase.auth();
+      firebase.database().ref(`/userInfo/${currentUser.uid}/`)
+        .on('value', snapshot => {
+          console.log(snapshot.val());
+          dispatch({
+            type: FETCH_ACCOUNT_INFO,
+            payload: snapshot.val()
+          });
+        });
+    })
     .catch(e => signUpFail(dispatch, e));
 };
 
@@ -25,6 +49,17 @@ export const loginUser = ({ email, pass }, { nav }) => dispatch => {
   spinnerRun(dispatch);
   firebase.auth().signInWithEmailAndPassword(email, pass)
     .then(user => loginSuccess(dispatch, user, nav))
+    .then(() => {
+      const { currentUser } = firebase.auth();
+      firebase.database().ref(`/userInfo/${currentUser.uid}/`)
+        .on('value', snapshot => {
+          console.log(snapshot.val());
+          dispatch({
+            type: FETCH_ACCOUNT_INFO,
+            payload: snapshot.val()
+          });
+        });
+    })
     .catch(e => loginFail(dispatch, e));
 };
 
@@ -40,6 +75,12 @@ export const signUpStatusCheck = (dispatch, data) => {
       payload: 'Sign Up sucessful'
     });
   }
+};
+
+export const logOutUser = () => dispatch => {
+  firebase.auth().signOut()
+    .then(() => dispatch(logOut))
+    .catch((e) => console.log(e));
 };
 
 const signUpFail = (dispatch, e) => {
@@ -92,9 +133,9 @@ export const loginFail = (dispatch, e) => {
   console.log(e);
 };
 
-export const logOutUser = () => ({
+const logOut = {
   type: LOG_OUT
-});
+};
 
 export const passChange = (text) => ({
   type: PASS_CHANGE,

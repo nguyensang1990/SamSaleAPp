@@ -28,7 +28,9 @@ class DeliveryForm extends Component {
     const { cart } = this.props.addToCart;
     const { currentUser } = this.props.authData;
     return (
-      <ScrollView>
+      <ScrollView
+        style={{flex: 1, backgroundColor: 'white'}}
+      >
         <Card
           containerStyle={{ padding: 0, margin: 0 }}
           imageProps={{ resizeMode: 'cover', backgroundColor: 'black' }}
