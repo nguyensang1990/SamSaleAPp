@@ -2,26 +2,15 @@ import React, { Component } from 'react';
 import { ScrollView, View } from 'react-native';
 import { Card, Button, Text, Icon } from 'react-native-elements';
 import Communications from 'react-native-communications';
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 
 import { mainColor } from './common/Color';
 
 class Info extends Component {
   render () {
-    const { textStyle, iconStyle, buttonStyle, buttonTitleStyle, cardTitle, map } = styles;
+    const { textStyle, iconStyle, buttonStyle, buttonTitleStyle, cardTitle } = styles;
 
     return (
       <ScrollView>
-        <MapView
-          provider={PROVIDER_GOOGLE}
-          style={map}
-          initialRegion={{
-            latitude: 45.3483094,
-            longitude: -75.7584289,
-            longitudeDelta: 0.1,
-            latitudeDelta: 0.1
-          }}
-        />
         <Card
           titleStyle={cardTitle}
           title='Ottawa Shop'>
@@ -81,10 +70,6 @@ const styles = {
   buttonTitleStyle: {
     fontWeight: 'bold',
     fontSize: 25
-  },
-  map: {
-    width: '100%',
-    height: 300
   }
 };
 
